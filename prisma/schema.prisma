@@ -1,0 +1,224 @@
+// Prisma schema for Growvia — fintech fullstack app
+// Database: Supabase PostgreSQL
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// ─── USER ──────────────────────────────────────────────
+model User {
+  id              String   @id @default(uuid())
+  fullName        String
+  email           String   @unique
+  phoneNumber     String?
+  password        String   // bcrypt hash
+  emailVerified   Boolean  @default(false)
+  accountStatus   String   @default("active") // active | suspended
+  referralCode    String   @unique @default(uuid())
+  referredBy      String?
+  referralCount   Int      @default(0)
+  address         String?
+  city            String?
+  state           String?
+  country         String?
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  wallet            Wallet?
+  deposits          Deposit[]
+  withdrawals       Withdrawal[]
+  investments       Investment[]
+  kycSubmission     KycSubmission?
+  emailVerifications EmailVerification[]
+  passwordResets    PasswordReset[]
+  idempotencyKeys   IdempotencyKey[]
+}
+
+// ─── WALLET (one per user) ─────────────────────────────
+model Wallet {
+  id               String   @id @default(uuid())
+  userId           String   @unique
+  accountBalance   Decimal  @default(0) @db.Decimal(18, 2)
+  availableProfit  Decimal  @default(0) @db.Decimal(18, 2)
+  totalProfit      Decimal  @default(0) @db.Decimal(18, 2)
+  totalDeposits    Decimal  @default(0) @db.Decimal(18, 2)
+  totalWithdrawals Decimal  @default(0) @db.Decimal(18, 2)
+  totalInvestments Decimal  @default(0) @db.Decimal(18, 2)
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+
+  user          User          @relation(fields: [userId], references: [id], onDelete: Cascade)
+  ledgerEntries LedgerEntry[]
+}
+
+// ─── LEDGER (immutable financial audit trail) ──────────
+model LedgerEntry {
+  id          String   @id @default(uuid())
+  walletId    String
+  type        String   // CREDIT | DEBIT
+  category    String   // DEPOSIT | WITHDRAWAL | INVESTMENT | PROFIT | REFUND | REFERRAL_BONUS
+  amount      Decimal  @db.Decimal(18, 2)
+  balanceAfter Decimal @db.Decimal(18, 2)
+  description String?
+  referenceId String?  // link to deposit/withdrawal/investment id
+  createdAt   DateTime @default(now())
+
+  wallet Wallet @relation(fields: [walletId], references: [id], onDelete: Cascade)
+
+  @@index([walletId])
+  @@index([referenceId])
+}
+
+// ─── DEPOSIT ───────────────────────────────────────────
+model Deposit {
+  id             String   @id @default(uuid())
+  userId         String
+  crypto         String
+  amount         Decimal  @db.Decimal(18, 2)
+  status         String   @default("pending") // pending | successful | failed
+  proofOfPayment String?  // file URL or base64
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+}
+
+// ─── WITHDRAWAL ────────────────────────────────────────
+model Withdrawal {
+  id            String   @id @default(uuid())
+  userId        String
+  crypto        String
+  amount        Decimal  @db.Decimal(18, 2)
+  walletAddress String
+  status        String   @default("pending") // pending | successful | failed
+  requestedAt   DateTime @default(now())
+  processedAt   DateTime?
+  updatedAt     DateTime @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+}
+
+// ─── INVESTMENT PLAN (catalog — admin-seeded) ──────────
+model InvestmentPlan {
+  id               String   @id @default(uuid())
+  title            String
+  slug             String   @unique
+  type             String   // crypto | real-estate | stocks-and-bonds | loan
+  status           String   @default("active")
+  minDeposit       Decimal  @db.Decimal(18, 2)
+  maxDeposit       Decimal  @db.Decimal(18, 2)
+  dailyProfit      Decimal  @db.Decimal(8, 4) // percentage
+  contractDuration Int      // days
+  image            String?  // Sanity image ref or URL
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+
+  investments Investment[]
+}
+
+// ─── INVESTMENT (user's active contracts) ──────────────
+model Investment {
+  id             String   @id @default(uuid())
+  userId         String
+  planId         String
+  planType       String   // mirrors InvestmentPlan.type
+  amount         Decimal  @db.Decimal(18, 2)
+  profitEarned   Decimal  @default(0) @db.Decimal(18, 2)
+  interestAmount Decimal  @default(0) @db.Decimal(18, 2)
+  status         String   @default("active") // active | completed | suspended
+  startDate      DateTime @default(now())
+  endDate        DateTime
+  repaymentDate  DateTime?
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  user User           @relation(fields: [userId], references: [id], onDelete: Cascade)
+  plan InvestmentPlan @relation(fields: [planId], references: [id])
+
+  @@index([userId])
+}
+
+// ─── CRYPTO ADDRESS (admin-seeded deposit addresses) ───
+model CryptoAddress {
+  id      String @id @default(uuid())
+  crypto  String // BTC, ETH, USDT_TRC20 etc.
+  network String
+  address String
+
+  createdAt DateTime @default(now())
+
+  @@unique([crypto])
+}
+
+// ─── KYC ───────────────────────────────────────────────
+model KycSubmission {
+  id               String   @id @default(uuid())
+  userId           String   @unique
+  fullName         String
+  email            String
+  address          String
+  maritalStatus    String
+  dob              DateTime
+  idType           String
+  idNumber         String
+  idFront          String   // file URL
+  idBack           String   // file URL
+  status           String   @default("pending") // pending | approved | rejected
+  rejectionReasons String?
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+// ─── EMAIL VERIFICATION ────────────────────────────────
+model EmailVerification {
+  id        String   @id @default(uuid())
+  userId    String
+  token     String   @unique
+  expiresAt DateTime
+  createdAt DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+}
+
+// ─── PASSWORD RESET ────────────────────────────────────
+model PasswordReset {
+  id        String   @id @default(uuid())
+  userId    String
+  otp       String
+  expiresAt DateTime
+  used      Boolean  @default(false)
+  createdAt DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+}
+
+// ─── IDEMPOTENCY KEY ───────────────────────────────────
+model IdempotencyKey {
+  id         String   @id @default(uuid())
+  userId     String
+  key        String
+  route      String
+  responseCode Int?
+  responseBody String?
+  createdAt  DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, key, route])
+  @@index([userId])
+}
