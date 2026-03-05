@@ -21,7 +21,17 @@
 /build
 
 # misc
-.DS_Store
+# assets
+/public/*.jpg
+/public/*.jpeg
+/public/*.png
+/public/*.webp
+/public/*.svg
+!/public/logo.png
+!/public/hero.png
+!/public/hero.webp
+!/public/nod-hero-removebg-preview.png
+
 *.pem
 
 # debug
@@ -39,3 +49,10 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# logs
+*.log
+logs/
+*.zip
+*.rar
+*.7z
