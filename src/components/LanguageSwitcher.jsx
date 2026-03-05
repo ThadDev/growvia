@@ -132,7 +132,7 @@ export default function LanguageSwitcher() {
       {/* Toggle Button */}
       <button
         onClick={() => setOpen((prev) => !prev)}
-        className="flex items-center gap-2 rounded-full bg-icon px-5 py-3 text-sm font-medium text-white shadow-lg hover:scale-105 transition"
+        className="flex items-center gap-2 rounded-full bg-primary px-5 py-3 text-sm font-medium text-white shadow-lg hover:scale-105 transition"
       >
         🌍 Language
         <span className={`transition ${open ? "rotate-180" : ""}`}><i className="fa-solid fa-chevron-down"></i> </span>

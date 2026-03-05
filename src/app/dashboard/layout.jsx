@@ -41,7 +41,7 @@ export default function DashboardLayout({ children }) {
             />
 
             {/* Main content */}
-            <main className="flex-1 w-full min-w-0 mb-20 md:ml-[15em] md:mb-0 md:px-2 md:py-8 bg-gradient-to-br mt-18 md:mt-12 from-grad-from via-grad-via to-grad-to text-text">
+            <main className="flex-1 w-full min-w-0 mb-20 md:ml-[15em] md:mb-0 md:px-2 md:py-8 bg-dash-bg mt-18 md:mt-12 text-text">
               <DashboardContent />
               {children}
               <DashFooter />

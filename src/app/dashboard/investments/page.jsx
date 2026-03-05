@@ -117,10 +117,9 @@ function InvestmentCard({ investment }) {
         {/* Status Badge */}
         <span
           className={`absolute top-3 right-3 px-3 py-1 text-xs font-medium rounded-full backdrop-blur
-            ${
-              status === "active"
-                ? "bg-green-500/90 text-white"
-                : "bg-gray-700/80 text-white"
+            ${status === "active"
+              ? "bg-green-500/90 text-white"
+              : "bg-gray-700/80 text-white"
             }`}
         >
           {status}
@@ -145,7 +144,7 @@ function InvestmentCard({ investment }) {
           <Link
             href={`/dashboard/investments/${slug === "loans" ? slug.slice(0, -1) : slug}`}
           >
-            <button className="text-sm font-medium text-white px-4 py-3 bg-icon rounded-xl hover:cursor-pointer">
+            <button className="text-sm font-medium text-white px-4 py-3 bg-primary rounded-xl hover:cursor-pointer">
               Get Started
             </button>
           </Link>

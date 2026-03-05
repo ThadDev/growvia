@@ -64,7 +64,7 @@ export default function GettingStarted() {
                   </div>
 
                   {/* Icon */}
-                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-hover group-hover:bg-icon group-hover:text-white transition-colors">
+                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-hover group-hover:bg-primary group-hover:text-white transition-colors">
                     <Icon size={22} />
                   </div>
 

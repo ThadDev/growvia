@@ -32,49 +32,49 @@ const About = () => {
           </p>
         </div>
       </section>
-       <section className="flex flex-col bg-gradient-to-br from-grad-from to-grad-to md:flex-row items-center justify-between px-8 py-14 gap-12  max-w-7xl mx-auto">
-              {/* Image */}
-              <aside data-aos="fade-right" className="w-full md:w-5/12 flex justify-center">
-                <Image
-                  src="/section-1.jpg"
-                  alt="Investment and finance illustration"
-                  width={500}
-                  height={400}
-                  className="border border-icon shadow-sm shadow-icon rounded-md object-cover"
-                />
-              </aside>
-      
-              {/* Text content */}
-              <div data-aos="fade-in" className="flex flex-col gap-6 w-full justify-center text-justify items-center md:justify-start md:items-start md:w-7/12">
-                <h1 className="text-icon font-bold text-3xl md:text-4xl">
-                 About Growvia
-                </h1>
-      
-                <p className="text-text leading-relaxed">
-                  Over the years, Growvia has supported investors from diverse
-                  regions across the globe, building a strong presence rooted in
-                  trust, performance, and transparency. Our operations are led by
-                  seasoned investment professionals with deep expertise in trading and
-                  asset management, consistently delivering results through
-                  disciplined strategies and data-driven decisions.
-                  <br />
-                  <br />
-                  At Growvia, investing is designed to be clear, accessible, and
-                  efficient. We empower individuals to take control of their financial
-                  future through flexible, self-managed investment accounts that
-                  reduce unnecessary costs while maximizing long-term value. Now is
-                  the time to build a resilient investment portfolio with confidence
-                  and clarity.
-                </p>
-      
-                {/* <Link href="/about" className="w-fit">
-                  <button className="px-6 py-3 rounded-lg bg-icon text-white font-medium hover:opacity-90 transition">
+      <section className="flex flex-col bg-gradient-to-br from-grad-from to-grad-to md:flex-row items-center justify-between px-8 py-14 gap-12  max-w-7xl mx-auto">
+        {/* Image */}
+        <aside data-aos="fade-right" className="w-full md:w-5/12 flex justify-center">
+          <Image
+            src="/section-1.jpg"
+            alt="Investment and finance illustration"
+            width={500}
+            height={400}
+            className="border border-icon shadow-sm shadow-icon rounded-md object-cover"
+          />
+        </aside>
+
+        {/* Text content */}
+        <div data-aos="fade-in" className="flex flex-col gap-6 w-full justify-center text-justify items-center md:justify-start md:items-start md:w-7/12">
+          <h1 className="text-icon font-bold text-3xl md:text-4xl">
+            About Growvia
+          </h1>
+
+          <p className="text-text leading-relaxed">
+            Over the years, Growvia has supported investors from diverse
+            regions across the globe, building a strong presence rooted in
+            trust, performance, and transparency. Our operations are led by
+            seasoned investment professionals with deep expertise in trading and
+            asset management, consistently delivering results through
+            disciplined strategies and data-driven decisions.
+            <br />
+            <br />
+            At Growvia, investing is designed to be clear, accessible, and
+            efficient. We empower individuals to take control of their financial
+            future through flexible, self-managed investment accounts that
+            reduce unnecessary costs while maximizing long-term value. Now is
+            the time to build a resilient investment portfolio with confidence
+            and clarity.
+          </p>
+
+          {/* <Link href="/about" className="w-fit">
+                  <button className="px-6 py-3 rounded-lg bg-primary text-white font-medium hover:opacity-90 transition">
                     Want to know more?
                   </button>
                 </Link> */}
-              </div>
-            </section>
-            <section className="container bg-gradient-to-br from-grad-from to-grad-to px-4 md:mt-24 mt-16">
+        </div>
+      </section>
+      <section className="container bg-gradient-to-br from-grad-from to-grad-to px-4 md:mt-24 mt-16">
         {/* Header */}
         <div className="grid grid-cols-1 pb-8 text-center">
           <h6 data-aos="fade-up" className="text-primary text-sm font-bold uppercase mb-2">
@@ -95,7 +95,7 @@ const About = () => {
         </div>
 
         {/* Features */}
-        <div  className="grid md:grid-cols-3 grid-cols-1 mt-8 gap-[30px]">
+        <div className="grid md:grid-cols-3 grid-cols-1 mt-8 gap-[30px]">
           {/* Feature 1 */}
           <div className="group border-2 border-hover rounded-lg py-2 px-2 text-center">
             <PieChart className="h-10 w-10 mx-auto text-hover group-hover:scale-105 transition" />
@@ -150,10 +150,10 @@ const About = () => {
           </div>
         </div>
       </section>
-      <Services/>
-      <GettingStarted/>
-      <TestimonialsPreview/>
-      <Footer/>
+      <Services />
+      <GettingStarted />
+      <TestimonialsPreview />
+      <Footer />
     </div>
   );
 };

@@ -193,12 +193,18 @@ export default function DashboardPage() {
 
       {/* Market Section */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 mt-7">
-        <div className="lg:col-span-2 bg-gradient-to-br from-grad-via to-grad-to rounded-xl shadow p-4">
+        <div
+          className="lg:col-span-2 bg-gradient-to-br from-grad-via to-grad-to rounded-2xl p-4 border border-border-color/40 transition-all duration-300"
+          style={{ boxShadow: "var(--card-shadow)" }}
+        >
           <h2 className="text-lg font-semibold mb-4">Market Analysis</h2>
           <TradingViewWidget theme={theme} />
         </div>
 
-        <div className="bg-gradient-to-br from-grad-via to-grad-to rounded-xl shadow-sm shadow-border-color p-4">
+        <div
+          className="bg-gradient-to-br from-grad-via to-grad-to rounded-2xl p-4 border border-border-color/40 transition-all duration-300"
+          style={{ boxShadow: "var(--card-shadow)" }}
+        >
           <div className="flex justify-between">
             <h2 className="text-lg font-semibold mb-4">Portfolio Summary</h2>
             <button

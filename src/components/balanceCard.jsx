@@ -44,7 +44,12 @@ export default function StatCard({
   ];
 
   return (
-    <div className="relative w-full max-w-sm rounded-xl bg-gradient-to-br from-grad-via to-grad-to px-4 py-3 text-text shadow-sm shadow-border-color hover:shadow-lg transition">
+    <div
+      className="stat-card relative w-full max-w-sm rounded-2xl bg-gradient-to-br from-grad-via to-grad-to px-4 py-3 text-text border border-border-color/40 transition-all duration-300 hover:-translate-y-1"
+      style={{ boxShadow: "var(--card-shadow)" }}
+      onMouseEnter={e => e.currentTarget.style.boxShadow = "var(--card-shadow-hover)"}
+      onMouseLeave={e => e.currentTarget.style.boxShadow = "var(--card-shadow)"}
+    >
       <div className="flex items-center justify-between">
         <div>
           <p className="text-[0.7rem] uppercase tracking-wide font-bold text-text">

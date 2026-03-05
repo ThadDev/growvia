@@ -6,7 +6,7 @@ import Link from "next/link";
 import { useBalanceVisibility } from "@/context/balanceVisibilityProvider";
 
 export default function AccountBalanceCard({
-    loading,
+  loading,
   title = "Account Balance",
   amount = 0,
   currency = "$",
@@ -15,7 +15,7 @@ export default function AccountBalanceCard({
   onWithdraw,
   onFund,
 }) {
-    const { hidden, toggle } = useBalanceVisibility();
+  const { hidden, toggle } = useBalanceVisibility();
 
   // const formattedAmount = `${currency}${amount.toLocaleString(undefined, {
   //   minimumFractionDigits: 2,
@@ -23,7 +23,12 @@ export default function AccountBalanceCard({
   // })}`;
 
   return (
-    <div className="relative w-full max-w-sm rounded-xl bg-gradient-to-br from-grad-via to-grad-to px-4 py-4 text-text shadow-sm shadow-border-color hover:shadow-lg transition">
+    <div
+      className="relative w-full max-w-sm rounded-2xl bg-gradient-to-br from-grad-via to-grad-to px-4 py-4 text-text border border-border-color/40 transition-all duration-300 hover:-translate-y-1"
+      style={{ boxShadow: "var(--card-shadow)" }}
+      onMouseEnter={e => e.currentTarget.style.boxShadow = "var(--card-shadow-hover)"}
+      onMouseLeave={e => e.currentTarget.style.boxShadow = "var(--card-shadow)"}
+    >
       {/* ================= MOBILE HEADER ================= */}
       <div className="flex items-center justify-between md:hidden">
         <h2 className="text-sm font-semibold text-text">
@@ -43,7 +48,7 @@ export default function AccountBalanceCard({
 
       {/* ================= MOBILE AMOUNT ================= */}
       <div className="mt-6 text-start md:hidden">
-       <div className="text-3xl font-bold tracking-tight">
+        <div className="text-3xl font-bold tracking-tight">
           {hidden ? "****" : amount}
         </div>
       </div>
@@ -54,16 +59,16 @@ export default function AccountBalanceCard({
           <p className="text-[0.7rem] uppercase tracking-wide font-bold text-text">
             {title}
           </p>
-            {/* {loading ? (
+          {/* {loading ? (
         <div className="h-8 w-28 rounded-md bg-border-color animate-pulse" />
       ) : (
         <h2 className="mt-1 text-2xl text-text font-semibold">
             {hidden ? "****" : formattedAmount}
           </h2> 
       )} */}
-       <div className="mt-1 text-2xl text-text font-semibold">
+          <div className="mt-1 text-2xl text-text font-semibold">
             {hidden ? "****" : amount}
-          </div> 
+          </div>
           {/* */}
         </div>
 
@@ -76,22 +81,22 @@ export default function AccountBalanceCard({
 
       {/* ================= MOBILE ACTION BUTTONS ================= */}
       <div className="mt-5 grid grid-cols-2 gap-3 md:hidden">
-  <Link
-    href="/dashboard/withdraw"
-    className="flex items-center justify-center gap-2 rounded-xl bg-icon px-3 py-2 text-sm font-medium text-white backdrop-blur hover:bg-white/25 transition"
-  >
-    <Icon icon="mdi:bank-transfer-out" className="text-lg" />
-    Withdraw
-  </Link>
+        <Link
+          href="/dashboard/withdraw"
+          className="flex items-center justify-center gap-2 rounded-xl bg-primary px-3 py-2 text-sm font-medium text-white backdrop-blur hover:bg-white/25 transition"
+        >
+          <Icon icon="mdi:bank-transfer-out" className="text-lg" />
+          Withdraw
+        </Link>
 
-  <Link
-    href="/dashboard/deposit"
-    className="flex items-center justify-center gap-2 rounded-xl bg-icon px-3 py-2 text-sm font-medium text-white backdrop-blur hover:bg-white/25 transition"
-  >
-    <Icon icon="mdi:plus-circle-outline" className="text-lg" />
-    Fund
-  </Link>
-</div>
+        <Link
+          href="/dashboard/deposit"
+          className="flex items-center justify-center gap-2 rounded-xl bg-primary px-3 py-2 text-sm font-medium text-white backdrop-blur hover:bg-white/25 transition"
+        >
+          <Icon icon="mdi:plus-circle-outline" className="text-lg" />
+          Fund
+        </Link>
+      </div>
 
     </div>
   );

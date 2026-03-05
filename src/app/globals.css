@@ -6,34 +6,34 @@
   color-scheme: light;
 
   /* Core Colors */
-  --primary-color: #fe6c00;
-  /* vibrant premium orange */
-  --hover: #ff944d;
-  /* lighter orange */
+  --primary-color: #f56500;
+  --hover: #ff8533;
   --icon: var(--primary-color);
 
   /* Backgrounds & Surfaces */
-  --background: #fef8f1;
-  /* milk-like soft white */
+  --background: #f9fafb;
   --card-bg: #ffffff;
-  /* crisp card background */
-  --surface: #fffaf2;
-  /* input / card surfaces */
+  --surface: #f3f4f6;
 
   /* Text */
-  --foreground: #1a1a1a;
-  /* rich charcoal */
-  --text-primary: #2c2c2c;
-  --text-muted: #7a6b5f;
+  --foreground: #111827;
+  --text-primary: #1f2937;
+  --text-muted: #6b7280;
 
-  /* Gradients (Refined for Premium Feel) */
+  /* Gradients — card surface colors, lighter than dash-bg to pop */
   --grad-from: #ffffff;
-  --grad-via: #faf5f0;
-  --grad-to: #f7f1eb;
+  --grad-via: #f9fafb;
+  --grad-to: #f3f4f6;
 
   /* Borders */
-  --border: #e8dcd0;
-  /* softened border for better blending */
+  --border: #e5e7eb;
+
+  /* Card Shadows */
+  --card-shadow: 0 4px 18px rgba(0, 0, 0, 0.08), 0 1.5px 6px rgba(0, 0, 0, 0.05);
+  --card-shadow-hover: 0 8px 32px rgba(0, 0, 0, 0.14), 0 3px 12px rgba(0, 0, 0, 0.08);
+
+  /* Dashboard Background */
+  --dash-bg: #e5e7eb;
 }
 
 .force-light {
@@ -49,29 +49,34 @@
   color-scheme: dark;
 
   /* Core Colors */
-  --primary-color: #fe6c00;
-  --hover: #ff944d;
+  --primary-color: #fb8c2f;
+  --hover: #ffa554;
   --icon: var(--hover);
 
   /* Backgrounds & Surfaces */
-  --background: #473b33;
-  /* deeper premium chocolate */
-  --card-bg: #574b43;
-  /* refined card depth */
-  --surface: #5e524a;
+  --background: #111827;
+  --card-bg: #1f2937;
+  --surface: #1a2234;
 
   /* Text */
-  --foreground: #f2e8de;
-  --text-primary: #ffffff;
-  --text-muted: #a69588;
+  --foreground: #f9fafb;
+  --text-primary: #f3f4f6;
+  --text-muted: #9ca3af;
 
-  /* Gradients (Dark Mode Premium) */
-  --grad-from: #473b33;
-  --grad-via: #574b43;
-  --grad-to: #6d6159;
+  /* Gradients — card surface colors, darker than dash-bg to pop */
+  --grad-from: #1f2937;
+  --grad-via: #1a2234;
+  --grad-to: #172032;
 
   /* Borders */
-  --border: #6d6159;
+  --border: #374151;
+
+  /* Card Shadows */
+  --card-shadow: 0 4px 20px rgba(0, 0, 0, 0.45), 0 1.5px 6px rgba(0, 0, 0, 0.30);
+  --card-shadow-hover: 0 10px 36px rgba(0, 0, 0, 0.60), 0 4px 14px rgba(0, 0, 0, 0.40);
+
+  /* Dashboard Background */
+  --dash-bg: #0d1117;
 }
 
 @theme inline {
@@ -90,6 +95,9 @@
   --color-text-muted: var(--text-muted);
   --color-border-color: var(--border);
   --color-surface: var(--surface);
+  --shadow-card: var(--card-shadow);
+  --shadow-card-hover: var(--card-shadow-hover);
+  --color-dash-bg: var(--dash-bg);
 }
 
 @media (prefers-color-scheme: dark) {

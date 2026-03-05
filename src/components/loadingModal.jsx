@@ -23,7 +23,7 @@ export default function LoadingModal({ open, message = "Loading your data..." })
 
         {/* Subtle progress bar */}
         <div className="mt-6 h-1 w-full bg-border rounded-full overflow-hidden">
-          <div className="h-full w-1/3 bg-icon animate-pulse rounded-full" />
+          <div className="h-full w-1/3 bg-primary animate-pulse rounded-full" />
         </div>
       </div>
     </div>
