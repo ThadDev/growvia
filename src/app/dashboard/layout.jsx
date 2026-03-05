@@ -14,7 +14,7 @@ function DashboardContent({ children }) {
   if (kyc) {
     return (
       <>
-        {kyc !== "approved" || kyc !== "pending" && <KycReminderCard />}
+        {kyc !== "approved" && kyc !== "pending" && <KycReminderCard />}
         {children}
       </>
     );
