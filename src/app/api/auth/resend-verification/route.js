@@ -1,3 +1,4 @@
+export const dynamic = 'force-dynamic';
 import { withErrorHandler, apiSuccess, apiError } from "@/utils/errorHandler";
 import { resendVerificationSchema } from "@/lib/validation";
 import { resendVerification } from "@/services/authService";

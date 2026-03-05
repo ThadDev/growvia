@@ -1,3 +1,4 @@
+export const dynamic = 'force-dynamic';
 import { withErrorHandler, apiSuccess, apiError } from "@/utils/errorHandler";
 import { signupSchema } from "@/lib/validation";
 import { registerUser } from "@/services/authService";

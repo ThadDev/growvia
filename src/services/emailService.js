@@ -5,7 +5,7 @@ const resend = process.env.RESEND_API_KEY
     ? new Resend(process.env.RESEND_API_KEY)
     : null;
 
-const APP_URL = process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000";
+const APP_URL = process.env.NEXT_PUBLIC_APP_URL || "https://growviafinance.vercel.app";
 const FROM_EMAIL = "Growvia <onboarding@resend.dev>";
 
 /**

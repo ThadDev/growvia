@@ -1,3 +1,4 @@
+export const dynamic = 'force-dynamic';
 import { withErrorHandler, apiSuccess, apiError } from "@/utils/errorHandler";
 import { resetPasswordSchema } from "@/lib/validation";
 import { resetPassword } from "@/services/authService";

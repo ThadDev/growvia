@@ -1,3 +1,4 @@
+export const dynamic = 'force-dynamic';
 import { withErrorHandler, apiSuccess } from "@/utils/errorHandler";
 import { logoutUser } from "@/services/authService";
 
