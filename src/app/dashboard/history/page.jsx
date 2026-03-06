@@ -48,6 +48,7 @@ export default function History() {
       );
 
       const result = await res.json();
+      console.log(result)
       if (!res.ok)
         throw new Error(result?.message || "Failed to load deposits");
 
@@ -252,7 +253,7 @@ function DepositTable({ data }) {
                   </span>
                 </td>
                 <td className="py-4">
-                  {new Date(tx._createdAt).toLocaleDateString()}
+                  {new Date(tx.createdAt).toLocaleDateString()}
                 </td>
               </tr>
             ))}
@@ -282,7 +283,7 @@ function DepositTable({ data }) {
             </div>
 
             <div className="text-xs text-text/60">
-              {new Date(tx._createdAt).toLocaleString()}
+              {new Date(tx.createdAt).toLocaleString()}
             </div>
           </div>
         ))}
