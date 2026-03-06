@@ -4,21 +4,7 @@ import LoadingModal from "@/components/loadingModal";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
-/* =====================
-   Sanity Image Helper
-===================== */
-function buildSanityImageUrl(ref) {
-  if (!ref) return "";
-
-  // image-<id>-<width>x<height>-<format>
-  const [, id, size, format] = ref.split("-");
-  const [width, height] = size.split("x");
-
-  const PROJECT_ID = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID;
-  const DATASET = process.env.NEXT_PUBLIC_SANITY_DATASET || "production";
-
-  return `https://cdn.sanity.io/images/${PROJECT_ID}/${DATASET}/${id}-${width}x${height}.${format}`;
-}
+// Sanity image helper removed — replaced with direct PostgreSQL binary strings
 
 export default function InvestmentsPage() {
   const [investments, setInvestments] = useState([]);
@@ -37,6 +23,7 @@ export default function InvestmentsPage() {
       if (!res.ok) throw new Error("Failed to fetch investments");
 
       const result = await res.json();
+      console.log(result)
       setInvestments(result?.data?.investments || []);
     } catch (error) {
       console.error("Fetch investments error:", error);
@@ -94,8 +81,7 @@ export default function InvestmentsPage() {
 function InvestmentCard({ investment }) {
   const { title, status, type, image, createdAt, slug } = investment;
 
-  const imageRef = image?.asset?._ref;
-  const imageUrl = buildSanityImageUrl(imageRef);
+  const imageUrl = image || "";
 
   return (
     <article className="group relative overflow-hidden rounded-2xl border border-border bg-card shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
