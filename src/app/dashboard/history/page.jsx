@@ -157,7 +157,7 @@ function WithdrawalTable({ data }) {
 
           <tbody>
             {data.map((tx) => (
-              <tr key={tx._id} className="border-b border-border-color text-sm">
+              <tr key={tx.id} className="border-b border-border-color text-sm">
                 <td className="py-4 font-medium">{tx.crypto}</td>
 
                 <td className="py-4">${tx.amount.toLocaleString()}</td>
@@ -184,7 +184,7 @@ function WithdrawalTable({ data }) {
       <div className="md:hidden space-y-4">
         {data.map((tx) => (
           <div
-            key={tx._id}
+            key={tx.id}
             className="border border-border-color rounded-xl p-4 space-y-2"
           >
             <div className="flex justify-between items-center">
@@ -240,7 +240,7 @@ function DepositTable({ data }) {
 
           <tbody>
             {data.map((tx) => (
-              <tr key={tx._id} className="border-b border-border-color text-sm">
+              <tr key={tx.id} className="border-b border-border-color text-sm">
                 <td className="py-4 font-medium">{tx.crypto}</td>
                 <td className="py-4">${tx.amount.toLocaleString()}</td>
                 <td className="py-4">
@@ -264,7 +264,7 @@ function DepositTable({ data }) {
       <div className="md:hidden space-y-4">
         {data.map((tx) => (
           <div
-            key={tx._id}
+            key={tx.id}
             className="border border-border-color rounded-xl p-4 space-y-2"
           >
             <div className="flex justify-between">

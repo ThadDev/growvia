@@ -2,6 +2,7 @@ export const dynamic = 'force-dynamic';
 import { withErrorHandler, apiSuccess, apiError } from "@/utils/errorHandler";
 import { getAuthUserId } from "@/lib/auth";
 import prisma from "@/lib/prisma";
+import { distributeUserProfits } from "@/services/profitService";
 
 /**
  * GET /api/users/dashboard-stats
@@ -9,6 +10,9 @@ import prisma from "@/lib/prisma";
 export const GET = withErrorHandler(async () => {
     const userId = await getAuthUserId();
     if (!userId) return apiError("Unauthorized", 401);
+
+    // Apply any pending investment profits up to this exact minute
+    await distributeUserProfits(userId);
 
     const user = await prisma.user.findUnique({
         where: { id: userId },

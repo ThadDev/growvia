@@ -74,7 +74,7 @@ export default function DepositPage() {
 
           return (
             <button
-              key={item._id}
+              key={item.id}
               onClick={() => router.push(`/dashboard/deposit/${item.crypto}`)}
               className="group rounded-2xl border border-border-color bg-card p-6 text-left hover:border-primary/50 hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
             >

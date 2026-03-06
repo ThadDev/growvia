@@ -101,7 +101,7 @@ export default function ActiveContractsPage() {
 
               return (
                 <tr
-                  key={c._id}
+                  key={c.id}
                   className="border-b border-border-color text-sm"
                 >
                   {/* PLAN TYPE */}
@@ -182,7 +182,7 @@ export default function ActiveContractsPage() {
 
           return (
             <div
-              key={c._id}
+              key={c.id}
               className="border border-border-color rounded-2xl p-4 shadow-sm bg-card"
             >
               <div className="flex justify-between items-start mb-2">

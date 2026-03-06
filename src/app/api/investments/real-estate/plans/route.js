@@ -11,7 +11,7 @@ export const GET = withErrorHandler(async () => {
     if (!userId) return apiError("Unauthorized", 401);
 
     const plans = await prisma.investmentPlan.findMany({
-        where: { type: "real-estate", status: "active" },
+        where: { type: "realEstate", status: "active" },
         orderBy: { minDeposit: "asc" },
     });
 

@@ -103,7 +103,7 @@ export default function LoanRequestPage() {
         credentials: "include",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          planId: selectedPlan._id,
+          planId: selectedPlan.id,
           amount: numericAmount,
           startDate: new Date().toISOString(),
         }),
@@ -142,7 +142,7 @@ export default function LoanRequestPage() {
         credentials: "include",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          planId: selectedPlan._id,
+          planId: selectedPlan.id,
           amount: numericAmount,
           startDate: new Date().toISOString(),
         }),
@@ -191,10 +191,10 @@ export default function LoanRequestPage() {
           ) : (
             plans.map((plan) => (
               <button
-                key={plan._id}
+                key={plan.id}
                 onClick={() => selectPlan(plan)}
                 className={`w-full border rounded-xl p-4 text-left transition ${
-                  selectedPlan?._id === plan._id
+                  selectedPlan?.id === plan.id
                     ? "border-primary bg-primary/5"
                     : "border-surface"
                 }`}

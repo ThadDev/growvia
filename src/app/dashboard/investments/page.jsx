@@ -68,7 +68,7 @@ export default function InvestmentsPage() {
       <h1 className="text-xl font-bold text-center">Investments Types</h1>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {investments.map((inv) => (
-          <InvestmentCard key={inv._id} investment={inv} />
+          <InvestmentCard key={inv.id} investment={inv} />
         ))}
       </div>
     </section>
@@ -128,7 +128,7 @@ function InvestmentCard({ investment }) {
           </span> */}
 
           <Link
-            href={`/dashboard/investments/${slug === "loans" ? slug.slice(0, -1) : slug}`}
+            href={`/dashboard/investments/${type === "loans" ? type.slice(0, -1) : type}`}
           >
             <button className="text-sm font-medium text-white px-4 py-3 bg-primary rounded-xl hover:cursor-pointer">
               Get Started

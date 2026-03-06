@@ -40,12 +40,12 @@ export default function CryptoPlansPage() {
      Buy Plan
   ===================== */
   const buyPlan = async (plan) => {
-    const amount = amounts[plan._id];
+    const amount = amounts[plan.id];
 
     if (!amount || Number(amount) < plan.minDeposit) return;
 
     try {
-      setBuyingId(plan._id);
+      setBuyingId(plan.id);
 
       const res = await fetch(`${API_BASE}/users/me/investments/real-estate`, {
         method: "POST",
@@ -55,14 +55,14 @@ export default function CryptoPlansPage() {
         credentials: "include",
         body: JSON.stringify({
           amount: Number(amount),
-          planId: plan._id,
+          planId: plan.id,
         }),
       });
 
       if (res.ok) {
         showToast({ message: "plan purchased successfully", type: "success" });
       }
-      setAmounts((prev) => ({ ...prev, [plan._id]: "" }));
+      setAmounts((prev) => ({ ...prev, [plan.id]: "" }));
     } catch (err) {
       showToast({ message: err.message, type: "error" });
     } finally {
@@ -97,7 +97,7 @@ export default function CryptoPlansPage() {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {plans.map((plan) => (
           <div
-            key={plan._id}
+            key={plan.id}
             className="relative rounded-2xl border border-border bg-card p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
           >
             {/* Badge */}
@@ -142,11 +142,11 @@ export default function CryptoPlansPage() {
               <input
                 type="number"
                 placeholder={`Min $${plan.minDeposit}`}
-                value={amounts[plan._id] || ""}
+                value={amounts[plan.id] || ""}
                 onChange={(e) =>
                   setAmounts((prev) => ({
                     ...prev,
-                    [plan._id]: e.target.value,
+                    [plan.id]: e.target.value,
                   }))
                 }
                 className="w-full rounded-xl border border-border bg-surface px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary"
@@ -157,13 +157,13 @@ export default function CryptoPlansPage() {
             <button
               onClick={() => buyPlan(plan)}
               disabled={
-                buyingId === plan._id ||
-                !amounts[plan._id] ||
-                Number(amounts[plan._id]) < plan.minDeposit
+                buyingId === plan.id ||
+                !amounts[plan.id] ||
+                Number(amounts[plan.id]) < plan.minDeposit
               }
               className="mt-4 w-full rounded-xl bg-primary py-2.5 text-sm font-medium text-primary-foreground transition disabled:opacity-50 disabled:cursor-not-allowed hover:opacity-90"
             >
-              {buyingId === plan._id ? "Processing…" : "Buy Plan"}
+              {buyingId === plan.id ? "Processing…" : "Buy Plan"}
             </button>
           </div>
         ))}

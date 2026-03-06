@@ -6,8 +6,8 @@
   color-scheme: light;
 
   /* Core Colors */
-  --primary-color: #f56500;
-  --hover: #ff8533;
+  --primary-color: #03a758;
+  --hover: #4cfaa6;
   --icon: var(--primary-color);
 
   /* Backgrounds & Surfaces */
@@ -49,8 +49,8 @@
   color-scheme: dark;
 
   /* Core Colors */
-  --primary-color: #fb8c2f;
-  --hover: #ffa554;
+  --primary-color: #00f57f;
+  --hover: #4cfaa6;
   --icon: var(--hover);
 
   /* Backgrounds & Surfaces */
