@@ -88,7 +88,7 @@ export default function GettingStarted() {
               {/* Replace this div with <Image /> or <img /> */}
               <span className="text-sm text-text-muted">
                 <Image
-                  src={"/digital-tablet-screen-smart-tech.jpg"}
+                  src={"/tablet.jpg"}
                   width={600}
                   height={400}
                   alt="steps to set up Growvia acc"

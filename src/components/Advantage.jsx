@@ -77,9 +77,9 @@ export default function InvestmentAdvantages() {
 
           {/* Right: Image Placeholder */}
           <div className="lg:col-span-6 flex justify-center">
-            <div className="w-full max-w-md aspect-[4/5] rounded-3xl border border-hover bg-card flex items-center justify-center text-text-muted">
+            <div className="w-full max-w-md  rounded-3xl border border-hover bg-card flex items-center justify-center text-text-muted">
               <Image
-                src={"/woman-scanning-fingerprint-with-futuristic-interface-smart-technology.jpg"}
+                src={"/security.jpg"}
                 alt="security"
                 width={500}
                 height={400}

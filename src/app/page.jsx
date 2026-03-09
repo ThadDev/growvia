@@ -54,7 +54,7 @@ export default function Home() {
             className="w-full max-w-md md:max-w-xl h-auto object-contain drop-shadow-2xl"
           /> */}
           <Image
-            src={"/hero.webp"}
+            src={"/hero.png"}
             alt="Growvia"
             width={500}
             height={400}
@@ -105,7 +105,7 @@ export default function Home() {
         {/* Image */}
         <aside data-aos="fade-right" className="w-full md:w-5/12 flex justify-center">
           <Image
-            src="/section-1.jpg"
+            src="/hero.jpg"
             alt="Investment and finance illustration"
             width={500}
             height={400}
