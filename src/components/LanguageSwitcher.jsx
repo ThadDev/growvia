@@ -13,11 +13,11 @@ const LANGUAGES = [
   { code: "nl", label: "Dutch", flag: "🇳🇱" },
 
   // Africa
-  { code: "ar", label: "Arabic", flag: "🇸🇦" },
-  { code: "sw", label: "Swahili", flag: "🇰🇪" },
-  { code: "ha", label: "Hausa", flag: "🇳🇬" },
-  { code: "yo", label: "Yoruba", flag: "🇳🇬" },
-  { code: "ig", label: "Igbo", flag: "🇳🇬" },
+  // { code: "ar", label: "Arabic", flag: "🇸🇦" },
+  // { code: "sw", label: "Swahili", flag: "🇰🇪" },
+  // { code: "ha", label: "Hausa", flag: "🇳🇬" },
+  // { code: "yo", label: "Yoruba", flag: "🇳🇬" },
+  // { code: "ig", label: "Igbo", flag: "🇳🇬" },
 
   // Europe
   { code: "ru", label: "Russian", flag: "🇷🇺" },
