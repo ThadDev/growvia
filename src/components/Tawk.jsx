@@ -24,7 +24,7 @@ export default function TawkWidget() {
 
     const script = document.createElement("script");
     script.async = true;
-    script.src = "https://embed.tawk.to/6986e1f644bf221c35ba8bed/1jgre5atf";
+    // script.src = "https://embed.tawk.to/6986e1f644bf221c35ba8bed/1jgre5atf";
     script.charset = "UTF-8";
     script.setAttribute("crossorigin", "*");
 
